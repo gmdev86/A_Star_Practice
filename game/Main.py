@@ -64,9 +64,10 @@ while True:
 
     #print '(' + str(lead_x) + ',' + str(lead_y) + ')'
     start_tile = Tile.get_tile_by_grid_pos(lead_x, lead_y)
+    destination_tile = Tile.get_tile_by_grid_pos(9, 9)
     pygame.draw.rect(screen, (0, 0, 255), start_tile)
 
-    surrounding_tiles = Tile.get_surrounding_tiles(start_tile)
+    surrounding_tiles = Tile.get_surrounding_tiles(start_tile, destination_tile)
 
     for s_tile in surrounding_tiles:
         if s_tile:

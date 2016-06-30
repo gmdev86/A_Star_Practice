@@ -5,11 +5,12 @@ from Functions import *
 
 class A_Star():
 
-    def __init__(self, screen, source_tile):
+    def __init__(self, screen, source_tile, destination_tile):
         #self.half = Tile.width / 2
         self.open_list = []  # tiles to check
         self.closed_list = []  # tiles already checked
         self.source_tile = source_tile
+        self.destination_tile = destination_tile
         self.open_list.append(source_tile)
         self.screen = screen
 
@@ -39,7 +40,7 @@ class A_Star():
 
     def H(self):
         for tile in Tile.List:
-            tile.H = 10 * (abs(tile.x - self.source_tile.x) + abs(tile.y - self.source_tile.y)) / tile.height
+            tile.H = 10 * (abs(tile.x - self.destination_tile.x) + abs(tile.y - self.destination_tile.y)) / tile.height
             text_to_screen(self.screen, 'H: ' + str(tile.H), tile.x, tile.y + 12,
                            12, (255, 255, 255), 'monospace')
 
