@@ -66,14 +66,15 @@ while True:
     start_tile = Tile.get_tile_by_grid_pos(lead_x, lead_y)
     destination_tile = Tile.get_tile_by_grid_pos(9, 9)
     pygame.draw.rect(screen, (0, 0, 255), start_tile)
+    pygame.draw.rect(screen, (155, 155, 155), destination_tile)
 
-    surrounding_tiles = Tile.get_surrounding_tiles(start_tile, destination_tile)
+    surrounding_tiles = Tile.get_surrounding_tiles(start_tile)
 
     for s_tile in surrounding_tiles:
         if s_tile:
             pygame.draw.rect(screen, (0, 108, 0), s_tile)
 
-    A_Star(screen, start_tile)
+    A_Star(screen, start_tile, destination_tile)
 
     for tile in Tile.List:
         pygame.draw.rect(screen, (255, 0, 0), tile, 1)
